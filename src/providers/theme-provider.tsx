@@ -1,9 +1,8 @@
-"use client"
-import { ConfigProvider } from 'antd'
-import React from 'react'
+"use client";
+import React from "react";
+import { ConfigProvider } from "antd";
 
-export default function ThemeProvider({children}:{children:React.ReactNode}) {
-
+function ThemeProvider({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <ConfigProvider
@@ -43,3 +42,5 @@ export default function ThemeProvider({children}:{children:React.ReactNode}) {
     </div>
   );
 }
+
+export default ThemeProvider;
