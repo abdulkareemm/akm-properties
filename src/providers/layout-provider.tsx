@@ -5,7 +5,7 @@ import { GetCurrentUserFromMongoDB } from "../actions/users";
 import { User } from "@prisma/client";
 import { Button, Dropdown, message } from "antd";
 import { usePathname, useRouter } from "next/navigation";
-import Loader from "../components/Loader";
+import Loader from "@components/Loader";
 
 const userMenu = [
   {
@@ -95,7 +95,7 @@ export default function LayoutProvider({
   const getContent = () => {
     if (isPublicRoute) return children;
     if (loading) return <Loader />;
-    return <div className="py-5">{children}</div>;
+    return <div className="py-5 lg:px-20 px-5">{children}</div>;
   };
   const getCurrentUser = async () => {
     try {
