@@ -1,6 +1,6 @@
 import React from 'react'
 import PageTitle from '@components/PageTitle'
-import PropertiesTable from './_components/properties-table'
+import PropertiesTable from './_components/page'
 import LinkButton from '@/components/LinkButton'
 
 function Properties() {
