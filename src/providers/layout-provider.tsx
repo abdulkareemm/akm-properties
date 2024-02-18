@@ -5,6 +5,7 @@ import { GetCurrentUserFromMongoDB } from "../actions/users";
 import { User } from "@prisma/client";
 import { message } from "antd";
 import { usePathname } from "next/navigation";
+import Loader from "../components/Loader";
 
 export default function LayoutProvider({
   children,
@@ -13,6 +14,7 @@ export default function LayoutProvider({
 }) {
   const [currentUserData = null, setCurrentUserData] =
     React.useState<User | null>(null);
+  const [loading = false, setLoading] = React.useState<boolean>(false);
   const pathname = usePathname();
   const isPublicRoute = ["sign-in", "sign-up"].includes(pathname.split("/")[1]);
   const getHeader = () => {
@@ -31,17 +33,21 @@ export default function LayoutProvider({
   };
   const getContent = () => {
     if (isPublicRoute) return children;
-
+    if (loading) return <Loader />;
     return <div className="py-5">{children}</div>;
   };
   const getCurrentUser = async () => {
     try {
+      setLoading(true)
       const response: any = await GetCurrentUserFromMongoDB();
       if (response.error) throw new Error(response.error.message);
       setCurrentUserData(response.data);
     } catch (error: any) {
       console.log(error);
       message.error(error.message);
+    }
+    finally{
+      setLoading(false);
     }
   };
   useEffect(() => {
