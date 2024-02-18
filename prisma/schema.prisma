@@ -9,3 +9,15 @@ datasource db {
   provider = "mongodb"
   url      = env("MONGO_URL")
 }
+// user model
+model User {
+  id           String         @id @default(cuid()) @map("_id") 
+  username     String
+  email        String         @unique
+  profilePic   String
+  isAdmin      Boolean        @default(false)
+  isActive     Boolean        @default(true)
+  clerkUserId  String         @unique
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
