@@ -51,7 +51,7 @@ export default function Basic({
             },
           ]}
         >
-          <Select options={propertyTypes} defaultValue={propertyTypes[0]} />
+          <Select options={propertyTypes}  />
         </Form.Item>
         <Form.Item
           name="status"
@@ -65,7 +65,6 @@ export default function Basic({
         >
           <Select
             options={propertyStatuses}
-            defaultValue={propertyStatuses[0]}
           />
         </Form.Item>
         <Form.Item
