@@ -1,4 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+.cl-internal-b3fm6y {
+  display: none !important;
+}
+
+.cl-card {
+  border-radius: 4px !important;
+}
+
+input {
+  width: 100% !important;
+}
+
+.ant-form-item {
+  margin-bottom: 5px !important;
+}
+
+.ant-steps-item-title {
+  font-size: 14px !important;
+}
+
+table {
+  border: 1px solid #b5b5b5 !important;
+  margin-top: 10px !important;
+}
+
+/* property main image animation */
+
+.property-main-image {
+  transition: all 0.5s ease-in-out;
+}
+
+
+.property-main-image:hover {
+  transform: scale(1.1);
+}
 
