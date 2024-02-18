@@ -1,12 +1,14 @@
 import React from 'react'
 import PageTitle from '@components/PageTitle'
 import PropertiesTable from './_components/properties-table'
+import LinkButton from '@/components/LinkButton'
 
 function Properties() {
   return (
     <div>
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <PageTitle title={"Properties"}/>
+        <LinkButton title="Create Property" path="/user/properties/create-property"/>
       </div>
       <PropertiesTable/>
     </div>

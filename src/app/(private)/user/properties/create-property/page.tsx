@@ -1,7 +1,12 @@
+import PageTitle from '@/components/PageTitle'
 import React from 'react'
+import PropertiesForm from '../_components/properties-form/page'
 
 export default function CreateProperty() {
   return (
-    <div>CreateProperty</div>
+    <div>
+      <PageTitle title="Create Property"/>
+      <PropertiesForm/>
+    </div>
   )
 }
