@@ -9,15 +9,51 @@ datasource db {
   provider = "mongodb"
   url      = env("MONGO_URL")
 }
+
 // user model
 model User {
-  id           String         @id @default(cuid()) @map("_id") 
-  username     String
-  email        String         @unique
-  profilePic   String
-  isAdmin      Boolean        @default(false)
-  isActive     Boolean        @default(true)
-  clerkUserId  String         @unique
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
+  id          String     @id @default(cuid()) @map("_id")
+  username    String
+  email       String     @unique
+  profilePic  String
+  isAdmin     Boolean    @default(false)
+  isActive    Boolean    @default(true)
+  clerkUserId String     @unique
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  Property    Property[]
+}
+
+// property model
+model Property {
+  id               String   @id @default(cuid()) @map("_id")
+  userId           String
+  user             User     @relation(fields: [userId], references: [id])
+  name             String
+  description      String
+  type             String
+  status           String
+  price            Float
+  city             String
+  pincode          String
+  address          String
+  landmark         String
+  bedrooms         Int
+  bathrooms        Int
+  balconies        Int
+  furnishing       String
+  parking          String
+  floors           Int
+  area             Float
+  facing           String
+  age              Int
+  images           String[]
+  ownerName        String
+  ownerEmail       String
+  ownerPhone       String
+  showOwnerContact Boolean  @default(false)
+  isActive         Boolean  @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
