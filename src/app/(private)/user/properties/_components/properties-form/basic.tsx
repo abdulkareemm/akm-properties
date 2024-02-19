@@ -11,9 +11,10 @@ export default function Basic({
 }: PropertiesFormStepProps) {
   const onFinish = (values: any) => {
     setFinalValues({ ...finalValues, basic: values });
+    setCurrentStep(currentStep + 1)
   };
   return (
-    <Form layout="vertical" initialValues={finalValues.basic}>
+    <Form layout="vertical" initialValues={finalValues.basic} onFinish={onFinish}>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         <Form.Item
           name="name"
@@ -88,7 +89,7 @@ export default function Basic({
         >
           Back
         </Button>
-        <Button htmlType="submit" type="primary" onClick={() => setCurrentStep(currentStep + 1)}>
+        <Button htmlType="submit" type="primary" >
           Next
         </Button>
       </div>
