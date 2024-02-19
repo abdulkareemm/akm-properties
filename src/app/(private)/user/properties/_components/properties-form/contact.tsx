@@ -2,7 +2,7 @@ import React from "react";
 import { PropertiesFormStepProps } from ".";
 import { Button, Form, Input, Select, message } from "antd";
 import { UploadFilesToFirebaseAndReturnUrls } from "@/helpers/upload-media";
-import { AddProperty } from "@/actions/properties";
+import { AddProperty, EditProperty } from "@/actions/properties";
 import { useRouter, useParams } from "next/navigation";
 
 function Contact({
@@ -38,7 +38,11 @@ function Contact({
         images: tempFinalValues.media.images,
       };
       let response = null;
+      if (isEdit) {
+        response = await EditProperty(valuesAsPerDb, id);
+      } else {
         response = await AddProperty(valuesAsPerDb);
+      }
       if (response.error) throw new Error(response.error);
       message.success(response.message);
       router.push("/user/properties");
@@ -114,7 +118,6 @@ function Contact({
       </div>
       <div className="flex justify-end gap-5 mt-7">
         <Button
-          disabled={currentStep === 0}
           onClick={() => setCurrentStep(currentStep - 1)}
         >
           Back
