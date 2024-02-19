@@ -2,6 +2,7 @@ import React from "react";
 import { PropertiesFormStepProps } from ".";
 import { Button, Form, Input, Select, message } from "antd";
 import { UploadFilesToFirebaseAndReturnUrls } from "@/helpers/upload-media";
+import { AddProperty } from "@/actions/properties";
 import { useRouter, useParams } from "next/navigation";
 
 function Contact({
@@ -36,7 +37,11 @@ function Contact({
         ...tempFinalValues.contact,
         images: tempFinalValues.media.images,
       };
-      console.log(finalValues);
+      let response = null;
+        response = await AddProperty(valuesAsPerDb);
+      if (response.error) throw new Error(response.error);
+      message.success(response.message);
+      router.push("/user/properties");
     } catch (error: any) {
       message.error(error.message);
     } finally {
