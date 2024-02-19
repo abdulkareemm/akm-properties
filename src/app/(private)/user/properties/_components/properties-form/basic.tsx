@@ -85,7 +85,6 @@ export default function Basic({
         <Button
           type="primary"
           onClick={() => setCurrentStep(currentStep - 1)}
-          disabled={currentStep === 0}
         >
           Back
         </Button>

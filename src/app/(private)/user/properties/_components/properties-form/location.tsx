@@ -1,17 +1,19 @@
 import React from "react";
 import { PropertiesFormStepProps } from ".";
-import { Button, Form, Input, Select } from "antd";
+import { Button, Form, Input, InputNumber, Select } from "antd";
 
-export default function Location({
+function Location({
   currentStep,
   setCurrentStep,
   finalValues,
   setFinalValues,
 }: PropertiesFormStepProps) {
   const onFinish = (values: any) => {
-    setFinalValues({ ...finalValues, basic: values });
+    setFinalValues({ ...finalValues, location: values });
     setCurrentStep(currentStep + 1);
   };
+
+  // city , pincode , lanmark , address
   return (
     <Form
       layout="vertical"
@@ -70,13 +72,17 @@ export default function Location({
         </Form.Item>
       </div>
       <div className="flex justify-end gap-5 mt-7">
-        <Button type="primary" onClick={() => setCurrentStep(currentStep - 1)}>
+        <Button
+          onClick={() => setCurrentStep(currentStep - 1)}
+        >
           Back
         </Button>
-        <Button type="primary" onClick={() => setCurrentStep(currentStep + 1)}>
+        <Button htmlType="submit" type="primary">
           Next
         </Button>
       </div>
     </Form>
   );
 }
+
+export default Location;
