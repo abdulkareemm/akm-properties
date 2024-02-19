@@ -36,7 +36,7 @@ export default function PropertiesForm({
   });
   const [currentStep = 0, setCurrentStep] = React.useState(0);
   const [loading = false, setLoading] = React.useState(false);
-
+  console.log(currentStep)
   const commonPropsForSteps: any = {
     currentStep,
     setCurrentStep,
@@ -71,7 +71,7 @@ export default function PropertiesForm({
   ];
 
   useEffect(() => {
-    console.log(finalValues);
+    
   }, [finalValues]);
 
   return (

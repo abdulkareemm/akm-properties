@@ -83,6 +83,7 @@ export default function Basic({
       </div>
       <div className="flex justify-end gap-5">
         <Button
+        disabled={currentStep===0}
           type="primary"
           onClick={() => setCurrentStep(currentStep - 1)}
         >
