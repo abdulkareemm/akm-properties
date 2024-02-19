@@ -9,7 +9,6 @@ interface Props {
   };
 }
 export default async function EditProperty({ params }: { params: Props }) {
-  console.log(params)
   const property = await prisma.property.findUnique({
     where: {
       id: params.id,
