@@ -5,7 +5,6 @@ import prisma from "@/config/db";
 import { Property } from "@prisma/client";
 
 export default async function CreateProperty({ searchParams }: { searchParams  : any}) {
-  console.log(searchParams)
   const cloneFrom = searchParams?.cloneFrom||""
   let property:Property|null = null
   if(cloneFrom) {
